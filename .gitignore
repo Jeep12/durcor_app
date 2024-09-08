@@ -1,0 +1,5 @@
+templates_c/
+/vendor/
+.env
+vendor/
+serviceAccountKey.json

@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /php_api/
+    
+    # Reglas para manejar solicitudes a la API
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^api/(.*)$ router-api.php?resource=$1 [QSA,L,END]
+</IfModule>
