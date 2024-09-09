@@ -1,35 +1,29 @@
 <?php
-echo "Ruta de config.php: " . __DIR__ . '/config.php' . PHP_EOL;
-if (file_exists(__DIR__ . '/config.php')) {
-    echo "El archivo config.php existe y es accesible." . PHP_EOL;
-} else {
-    echo "El archivo config.php no se encuentra en la ruta especificada." . PHP_EOL;
-}
-
-require_once ("api/view/api-view.php");
+require_once('../model/product.model.php');
+require_once('../view/api-view.php');
+require_once('../model/user.model.php');  // Asegúrate de que esto también esté correcto si es necesario
 
 class ProductController
 {
     private $modelProducts;
-    private $view;  
-  private $data;
+    private $view;
+    private $model;
+
     public function __construct()
     {
         $this->modelProducts = new ProductsModel();
-        $this->data = file_get_contents("php://input");
-
+        $this->model = new Model();
         $this->view = new APIView();
     }
 
-    public function get_data(){
-      return json_decode($this->data);
-    }
     public function getAllProducts()
     {
-      $products = $this->modelProducts->getAllProducts();
-      if($products){
-        $this->view->response($products,200);
-      }
+        $products = $this->modelProducts->getAllProducts();
+        if ($products) {
+            $this->view->response($products, 200);
+        } else {
+            $this->view->response("No products found", 404);
+        }
     }
 }
 ?>
