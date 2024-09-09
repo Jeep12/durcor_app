@@ -7,7 +7,7 @@ use Dotenv\Dotenv;
 // Cargar las variables de entorno
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
+echo $_ENV['DB_HOST'];
 // Comprobar si las variables de entorno están definidas
 $requiredEnvVars = [
     'DB_HOST',
