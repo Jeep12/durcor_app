@@ -1,5 +1,5 @@
 <?php
-require_once ("api/model/product.model.php");
+require_once(__DIR__ . '/../model/product.model.php');
 require_once ("api/view/api-view.php");
 
 class ProductController
