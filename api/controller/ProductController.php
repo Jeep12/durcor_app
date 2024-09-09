@@ -1,5 +1,11 @@
 <?php
-require_once(__DIR__ . '/../model/product.model.php');
+echo "Ruta de config.php: " . __DIR__ . '/config.php' . PHP_EOL;
+if (file_exists(__DIR__ . '/config.php')) {
+    echo "El archivo config.php existe y es accesible." . PHP_EOL;
+} else {
+    echo "El archivo config.php no se encuentra en la ruta especificada." . PHP_EOL;
+}
+
 require_once ("api/view/api-view.php");
 
 class ProductController
